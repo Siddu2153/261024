@@ -1,0 +1,77 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+     <link rel="stylesheet" href="index.css">
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Expenses chart component</title>
+   
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+        <section class="Container">
+             <div class="balance">
+                <span>
+                    <h1>My balance</h1>
+                    <h2>$921.48</h2>
+                </span>
+                <span class="logo"><img src="logo.png" alt="" /></span>
+             </div>
+
+            <section class="chart">
+                <h2>Spending - Last 7 days</h2>
+
+                <div class="graph">
+                   
+                </div>
+                <hr>
+                <div class="content">
+                    <span>
+                        <h4>Total this month</h4>
+                        <h3>$478.33</h3>
+                    </span>
+
+                    <span>
+                        <p>+2.4%</p>
+                        <p>from last month</p>
+                    </span>
+                </div>
+            </section>
+        </section>
+
+    </main>
+
+    <script>
+
+const arr = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+  const days= ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+ 
+  const graph = document.querySelector(".graph");
+  for(let i = 0; i < arr.length; i++){
+    graph.innerHTML += 
+    `<span> 
+          <div class="${arr[i]}"></div> 
+          <div class="${days[i]} bar"></div>
+    </span>`
+  }
+  const bar = document.querySelectorAll(".bar");
+  bar.forEach((element, index) => {
+    const div = document.createElement("div");
+    element.after(div);
+    div.innerHTML = `<p class="days">${arr[index]}</p>`;
+    div.style.textAlign = "center";
+  });
+    </script>
+</body>
+</html>
